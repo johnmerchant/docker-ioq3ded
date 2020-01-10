@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Login to Docker 
+        run: docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Docker Buildx
+        uses: crazy-max/ghaction-docker-buildx@v1.0.5  
+      - name: Run Buildx
+        run: |
+          docker buildx build \
+            --tag jmercha/ioq3ded \
+            --platform linux/amd64,linux/arm64 \
+            --push \
+            .
