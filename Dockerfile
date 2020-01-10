@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM alpine AS base
+FROM alpine AS base
 
 FROM base AS build
 
