@@ -5,10 +5,9 @@ FROM base AS build
 WORKDIR /src
 
 RUN mkdir /app
+RUN apk add make g++
 
-RUN apk add git make g++
-RUN git clone https://github.com/ioquake/ioq3.git /src
-
+COPY ./ioq3/* ./
 COPY Makefile.local ./
 
 RUN make
