@@ -6,10 +6,8 @@ WORKDIR /src
 
 RUN mkdir /app
 RUN apk add make g++ git
-
-COPY ./ioq3/* ./
+RUN git clone https://github.com/ioquake/ioq3 .
 COPY Makefile.local ./
-
 RUN make
 RUN cp -R ./build/release-*/* /app 
 
