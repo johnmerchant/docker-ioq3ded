@@ -5,7 +5,7 @@ FROM base AS build
 WORKDIR /src
 
 RUN mkdir /app
-RUN apk add make g++
+RUN apk add make g++ git
 
 COPY ./ioq3/* ./
 COPY Makefile.local ./
