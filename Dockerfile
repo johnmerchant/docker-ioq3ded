@@ -5,6 +5,7 @@ RUN mkdir /app && apk add make g++ git && git clone https://github.com/ioquake/i
 COPY Makefile.local ./
 RUN make && cp -R ./build/release-*/ioq3ded.* /app/ioq3ded 
 FROM base AS app
-WORKDIR /app
-COPY --from=build /app/ioq3ded 
-ENTRYPOINT ["/app/ioq3ded"]
+MAINTAINER John Merchant <john@jmercha.dev>
+WORKDIR /quake3
+COPY --from=build /app/ioq3ded /usr/bin/ioq3ded 
+ENTRYPOINT ["/usr/bin/ioq3ded"]
