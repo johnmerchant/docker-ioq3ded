@@ -21,6 +21,6 @@ jobs:
         run: |
           docker buildx build \
             --tag jmercha/ioq3ded \
-            --platform linux/amd64,linux/arm64 \
+            --platform linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6\
             --push \
             .
